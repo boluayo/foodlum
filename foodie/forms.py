@@ -49,7 +49,7 @@ class ProfileForm(forms.ModelForm):
             'image':forms.FileInput(attrs={'class':'form-control', 'placeholder':'Image'}),
         }
         
-# class ShopCartform(forms.ModelForm):
-#     class Meta:
-#         model = Shopcart
-#         fields = ['quantity','how_spicy']
+class ShopCartform(forms.ModelForm):
+    class Meta:
+        model = Shopcart
+        fields = ['quantity','how_spicy']

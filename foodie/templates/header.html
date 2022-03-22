@@ -33,7 +33,7 @@
       </li>
       <li>
         {% if user.is_authenticated %}
-        <div>
+        <div class="d-flex">
           <a class="nav-link btn" href="{% url 'logoutt' %}" >Logout</a>
           <a class="nav-link btn" href="{% url 'user_profile' %}" >Profile</a>
           <a class="nav-link btn" href="{% url 'cart' %}" ><i class="fas fa-shopping-cart"></i>
@@ -47,13 +47,16 @@
             <a class="nav-link btn" href="{% url 'signin' %}" >Signin</a>
             <a class="nav-link btn" href="{% url 'register' %}">Register</a>
           {% endif %} 
-          <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">  
-            {% csrf_token %}
-              <input class="form-control mr-sm-2" name= "itemsearch" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Meals</button>
-          </form>
+          <li>
+            <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">  
+              {% csrf_token %}
+                <input class="form-control mr-sm-2" style="width: 6rem;" name= "itemsearch" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Meals</button>
+              </form>
+          </li>
         </div>  
       </li>
+      
     </ul>
   </div>
   <!-- <ul class="" style="display: flex;">

@@ -33,26 +33,26 @@
       </li>
       <li>
         {% if user.is_authenticated %}
-        <a class="nav-link btn" href="{% url 'logoutt' %}" >Logout</a>
-        <a class="nav-link btn" href="{% url 'user_profile' %}" >Profile</a>
-        <a class="nav-link btn" href="{% url 'cart' %}" ><i class="fas fa-shopping-cart"></i>
-          {% if cartcount > 0 %}
-          <span class="badge badge-pill badge-dark">{{cartcount}}</span>
+        <div>
+          <a class="nav-link btn" href="{% url 'logoutt' %}" >Logout</a>
+          <a class="nav-link btn" href="{% url 'user_profile' %}" >Profile</a>
+          <a class="nav-link btn" href="{% url 'cart' %}" ><i class="fas fa-shopping-cart"></i>
+            {% if cartcount > 0 %}
+            <span class="badge badge-pill badge-dark">{{cartcount}}</span>
+            {% else %}
+              <span class="badge badge-pill badge-dark">0</span>  
+            {% endif %}
+          </a>  
           {% else %}
-            <span class="badge badge-pill badge-dark">0</span>  
-          {% endif %}
-        </a>  
-      {% else %}
-        <a class="nav-link btn" href="{% url 'signin' %}" >Signin</a>
-        <a class="nav-link btn" href="{% url 'register' %}">Register</a>
-      {% endif %}   
-      </li>
-      <li>
-        <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">  
-          {% csrf_token %}
-            <input class="form-control mr-sm-2" name= "itemsearch" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Meals</button>
+            <a class="nav-link btn" href="{% url 'signin' %}" >Signin</a>
+            <a class="nav-link btn" href="{% url 'register' %}">Register</a>
+          {% endif %} 
+          <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">  
+            {% csrf_token %}
+              <input class="form-control mr-sm-2" name= "itemsearch" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Meals</button>
           </form>
+        </div>  
       </li>
     </ul>
   </div>

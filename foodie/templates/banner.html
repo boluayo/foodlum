@@ -1,0 +1,59 @@
+{% load static %}
+
+  {% comment %} <div class="kfc">
+    <div>
+      <h2>Good Food And A Warm <span>Kitchen  Is What Makes A House A Home.</span></h2>
+      <a href="{% url 'meals' %}" class="btn">Meals <i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+  </div> {% endcomment %}
+
+
+  {% load static %}  
+
+    
+    {% block banner %}
+      
+    
+      
+
+      <div class="container">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-interval="1000">
+                <img src="{% static '' %}img/waiter1.jpg" class="d-block w-1000" alt="...">
+                <div class="carousel-caption d-none d-md-block text-primary">
+                  <h5 class="kitchen text-primary">First Class Kitchen</h5>
+                  <p class="text-primary">Good Food for Healthy living</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-interval="1000">
+                <img src="{% static '' %}img/soup2.jpg" class="d-block w-1000" alt="...">
+                <div class="carousel-caption d-none d-md-block ">
+                  <h5 class="kitchen text-primary">First Class Kitchen</h5>
+                  <p class="text-primary">Good Food for Healthy living</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-interval="1000">
+                <img src="{% static '' %}img/waiter2.jpg" class="d-block w-1000" alt="...">
+                <div class="carousel-caption d-none d-md-block text-primary">
+                  <h5 class="kitchen text-primary">First Class Kitchen</h5>
+                  <p class="text-primary">Good Food for Healthy living</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+      </div>
+    {% endblock banner %}

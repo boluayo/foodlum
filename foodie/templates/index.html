@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block title %} | Home{% endblock title %}
+    
+
+<!-- header section -->
+{% block header %}{% include "header.html" %}{% endblock header %}
+<!-- header section done -->
+
+<!-- banner section -->
+{% block banner %}{% include "banner.html" %}{% endblock banner %}
+<!-- banner section done -->
+
+<!-- content section -->
+{% block content %}
+    <!-- box1 -->
+    <div class="container-fluid pt-5 pb-4 box1">
+        <h1 class="text-center">Meal Variety</h1>
+        <div class="row">
+            <!-- breakfast -->
+            {% if varieties %}
+                {% for v in varieties %}
+                    <div class="col-12 col-sm-6 col-md mb-4 col-lg-3 w-25 mt-5 mb-3 text-center">
+                        <div class="card">
+                            <img src="{{v.image.url}}" class="card-img-top w-100 mt-5 mb-3">
+                            <div class="card-body text-center mb-4">
+                                <h5 class="card-title mb-3 text-white font-weight-bolder">{{v.name|title}}</h5>
+                                <a href="{% url 'variety' v.id v.slug %}" class="btn btn-primary">{{v.name|title}}</a> 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- breakfast done -->
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="container-fluid pt-4 pb-4 box2">
+        <h1>Breakfast meals</h1>
+        <div class="row">
+            <!-- breakfast -->
+            {% if breakfast %}
+                {% for food in breakfast %}
+                    <div class="col-12 col-sm-6 col-md mb-4 col-lg-3 w-25 mt-5 mb-3 text-center">
+                        <div class="card">
+                            <img src="{{food.image.url}}" class="card-img-top w-100 mt-5 mb-3">
+                            <div class="card-body text-center mb-4">
+                                <h5 class="card-title mb-3 text-white font-weight-bolder">{{food.meal}}</h5>
+                                <p class="card-text mb-4 text-white">
+                                    {% if food.discount %}
+                                        <del class="text-danger">{{food.price|floatformat:2|intcomma}}</del>
+                                        <span class="text-success">{{food.discount|floatformat:2|intcomma}}</span>
+                                    {% else %}
+                                        <span>{{food.price|floatformat:2|intcomma}}</span>
+                                    {% endif %}
+                                </p>
+                                <a href="{% url 'meals' %}" class="btn btn-primary">View More</a> 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- breakfast done -->
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container-fluid pt-4 pb-4 box3">
+        <h1>Lunch meals</h1>
+        <div class="row">
+            {% if lunch %}
+                {% for m in lunch %}
+                    <div class="col-12 col-sm-6 col-md mb-4 col-lg-3 w-25 mt-5 mb-3 text-center">
+                        <div class="card">
+                            <img src="{{m.image.url}}" class="card-img-top w-100 mt-5 mb-3">
+                            <div class="card-body text-center mb-4">
+                                <h5 class="card-title mb-3 text-white font-weight-bolder">{{m.meal}}</h5>
+                                <p class="card-text mb-4 text-white">
+                                    {% if m.discount %}
+                                        <del class="text-danger">{{m.price|floatformat:2|intcomma}}</del>
+                                        <span class="text-success">{{m.discount|floatformat:2|intcomma}}</span>
+                                    {% else %}
+                                        <span>{{m.price|floatformat:2|intcomma}}</span>
+                                    {% endif %}
+                                </p>
+                                <a href="{% url 'meals' %}" class="btn btn-primary">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- lunch done -->
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="container-fluid pt-4 pb-4 box4">
+        <h1>Dinner meals</h1>
+        <div class="row">
+
+            {% if dinner %}
+                {% for d in dinner %}
+                    <div class="col-12 col-sm-6 col-md mb-4 col-lg-3 w-25 mt-5 mb-3 text-center">
+                        <div class="card">
+                            <img src="{{d.image.url}}" class="card-img-top w-100 mt-5 mb-3">
+                            <div class="card-body text-center mb-4">
+                                <h5 class="card-title mb-3 text-white font-weight-bolder">{{d.meal}}</h5>
+                                <p class="card-text mb-4 text-white">
+                                    {% if d.discount %}
+                                        <del class="text-danger">{{d.price|floatformat:2|intcomma}}</del>
+                                        <span class="text-success">{{d.discount|floatformat:2|intcomma}}</span>
+                                    {% else %}
+                                        <span>{{d.price|floatformat:2|intcomma}}</span>
+                                    {% endif %}
+                                </p>
+                                <a href="{% url 'meals' %}" class="btn">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- dinner done -->
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
+<!-- content section done -->
+
+<!-- prefooter section  -->
+{% block prefooter %} {% include "prefooter.html" %}{% endblock prefooter %}
+<!-- prefooter section done -->
+
+
+<!-- map section  -->
+{% block map %} {% include "map.html" %}{% endblock map %}
+<!-- map section done -->
+    
+
+<!-- footer section  -->
+{% block footer %}{% include "footer.html" %}{% endblock footer %}
+<!-- footer section done -->
+
+
+    

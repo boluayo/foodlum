@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load mathfilters %}
+
+
+
+{% block header %}{% include 'header.html' %}{% endblock header %}
+    
+
+{% block content %}
+    <div class="container-fluid cart-header text-center" style="background-color: rgba(201, 201, 94, 0.496);height:8rem">
+        <h1>Checkout <span></span></h1>
+  
+
+    </div>
+    <div class="container-fluid mt-5">
+        <div class="container" style="background-color: #e9ece6;">
+            <table class="table" border = "black">
+                <thead class="">
+                    <tr class="bg-warning">
+                       
+                        <th scope="col">Image</th>
+                        <th scope="col">Meal</th>
+                        <th scope="col">Spice</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% if cart %}
+                        {% for item  in cart %}
+                            <tr>
+                               
+                                <td> <img src="{{item.meal.image.url}}" style="width: 7rem"></td>                                                                                                                                                                   
+                                <td> {{item.meal.meal}}</td>                                                                                                                                                                   
+                                <td>{{item.how_spicy}}</td>                                                                                                                                                                   
+                                <td>
+                                    {% if item.meal.discount %}
+                                        <span class="text-success">{{item.meal.discount|floatformat:2|intcomma}}</span>
+                                    {% else %}
+                                        <span>{{item.meal.price|floatformat:2|intcomma}}</span>
+                                    {% endif %}
+                                </td>                                                                                                                                                                   
+                                <td>{{item.quantity}}</td>                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                          
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tr>
+                </tbody>
+                <table>
+                    <tbody>
+
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total :{{total|floatformat:2|intcomma}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-5 mb-4">
+      </div>
+        <h3 class="text-center">Checkout</h3>
+      </div>
+      <div class="container mb-5">
+        <h2>Billing Information</h2>
+        <small>Already Register, click <a href="{% url 'signin' %}">here to Login</a></small>
+      </div>
+        <div class="container">
+            <div class="checkout-details">
+                <form action="{% url 'placeorder' %}" method='POST' class= "mx-auto">
+                {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group mr-3">
+                        <label for="Text">First Name</label>
+                        <input type="text" name="first_name" class="form-control"  value="{{profile.first_name}}" id="Text" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                        <label for="Text">Last Name</label>
+                        <input type="text" name="last_name" class="form-control"  value="{{profile.last_name}}" id="Text" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group mr-3">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" class="form-control" value="{{profile.user.email}}" id="Text" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" name="phone" class="form-control" value="{{profile.phone}}" id="Text" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" name="address" class="form-control" value="{{profile.address}}"  id="Text" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group mr-3">
+                        <label for="state">state</label>
+                        <input type="text" name="state" class="form-control" value="{{profile.state}}" id="Text" placeholder="state">
+                        </div>
+                        <div class="form-group">
+                        <label for="phone">Postal/Zip Code</label>
+                        <input type="text" name="postal code" class="form-control" value="{{profile.postal_code}}" id="Text" placeholder="Postal/Zip Code">
+                        <input type="hidden" name="get_total" value="{{total}}">
+                        </div>      
+                    </div>
+                    <div>
+                        <input type="checkbox" name="" id="">
+                        <label for="">Shipping to same address</label>
+                    </div>
+                    <button type="submit" class="btn my btn">Place Order</button>
+                </form>
+            </div>   
+            <div class="">
+                <div style="display: flex;">
+                    <h5 class="text-muted mr-5">Shipping To</h5>
+                    <p><a href="" style="text-decoration: none;">Change</a></p>
+                </div>    
+                <div>
+                    <a href="" class="btn btn-success">Proceed To Payment</a>
+                    <div class="py-3">
+                    <img src="{% static '' %}img/Safecheckout.png" style="width: 20rem;" >
+                    </div>
+                    <div  class="mb-3">
+                    <small class="text-muted"><i>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</i></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+  </div>
+{% endblock content %}
+
+
+{% block footer %} {% include "footer.html" %} {% endblock footer %}
+  

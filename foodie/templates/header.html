@@ -1,0 +1,72 @@
+{% load sample_tags %}
+{% load static %}
+
+
+
+<nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand text-white" href="#">FOODLUM</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars text-white"></i></span>
+    </button>
+    
+    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% intralink 'index' 'map_section' %}">Contact Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Varieties
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'varieties' %}">Varieties Here</a> 
+            {% if varieties %}
+              {% for v in varieties %}
+                <a class="dropdown-item" href="{% url 'variety' v.id v.slug %}">{{v.name|title}}</a>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ul class="" style="display: flex;">
+      
+      {% if user.is_authenticated %}
+        <a class="nav-link btn" href="{% url 'logoutt' %}" >Logout</a>
+        <a class="nav-link btn" href="{% url 'user_profile' %}" >Profile</a>
+        <a class="nav-link btn" href="{% url 'cart' %}" ><i class="fas fa-shopping-cart"></i>
+          {% if cartcount > 0 %}
+          <span class="badge badge-pill badge-dark"></span>{{cartcount}}</span>
+          {{cartcount}}
+          {% else %}
+            <span class="badge badge-pill badge-dark">0</span>  
+          {% endif %}
+        </a>  
+      {% else %}
+        <a class="nav-link btn" href="{% url 'signin' %}" >Signin</a>
+        <a class="nav-link btn" href="{% url 'register' %}">Register</a>
+      {% endif %}     
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">  
+    {% csrf_token %}
+      <input class="form-control mr-sm-2" name= "itemsearch" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Meals</button>
+    </form>
+    
+</nav>
+
+
+{% if messages %}
+  {% for item in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>{{item}}</strong> 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif,'Roboto', sans-serif;
+}
+h1{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: brown;
+}
+h1::before{
+    content: '';
+    background-color: red;
+    height: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(56px);
+}
+.btn{
+    background-color: #d8e51a;
+    color: #fff;
+}
+.btn:hover{
+    background-color: #1d13a8;
+    color: black;
+}
+
+
+    
+
+
+
+/* content page  */
+.box1,
+.box2,
+.box3,
+.box4{
+    background-color:#7e9cd3 ;
+}
+/* content page done */
+
+/* nav section  */
+.navbar{
+    background-color: #1d13a8;
+}
+.navbar #navbarSupportedContent .nav-item{
+    margin-left: 3rem;
+}
+.navbar #navbarSupportedContent .nav-item .nav-link{
+    color: white;
+    font-size: 1.3rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 200;
+    transition: 0.9s ease;
+}
+.navbar #navbarSupportedContent .nav-item .nav-link:hover{
+    background-color: rgba(241, 187, 6, 0.476);
+    color: rgb(7, 7, 7);
+    transform: translateX(3s);
+}
+/* nav section done */
+
+/* styling for offer */
+.offer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    justify-content: center;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.offersection{
+    background-color: rgba(142, 87, 90, 0.51);
+    height: 100%;
+}
+.offer img{
+    max-width: 70%;
+}
+.offer .boxx2 h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 3em;
+    color: brown;
+
+}
+.offer .boxx2 span{
+    color: red;
+}
+.boxx2 .app{
+    display: flex;
+    /* grid-template-columns: repeat(auto-fit,minmax(7rem,1fr)); */
+    padding-bottom: 2rem;
+    margin-left: 4rem;
+    cursor: pointer;
+}
+.boxx2 .app div{
+    margin-right: 1rem;
+}
+.boxx2 .app img{
+    max-width: 8rem;
+}
+/* footer section  */
+footer{
+    background-color: rgba(99, 88, 88, 0.755);
+}
+.footersection{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+    gap: 4rem;
+    align-items: left;
+    padding-top: 3rem;
+}
+.footersection h4{
+    color: brown;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 900;
+}
+.footersection a{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: 0.6s ease-in-out;
+    
+}
+.footersection a:hover{
+    background-color: #E6D16B;
+    color: brown;
+    transform: translateY(9s);
+}
+.footersection .app img{
+    width: 9rem;
+}
+.footersection .app .app_wrapper{
+    display: flex;
+    margin-right: 3rem;
+}
+/* footer section done */
+.card{
+    transition: 0.9s;
+    background:rgba(198, 178, 178, 0.673) ;
+}
+.card:hover{
+    transform: translateY(10px);
+}
+
+
+/* prefooter */
+.prefoot{
+    height: 50vh;  
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(214, 181, 181, 0.5),rgba(37, 28, 28, 0.5)),url(../img/background.jfif);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}  
+
+/* prefooter done */
+
+
+/* contact section  */
+#contact{
+    display: grid;
+    /* justify-content: center; */
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(40rem,1fr));
+    background-color: #C5A9AB;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.contact-info div{
+    margin-bottom: 1rem;
+}
+.contact-detail div{
+    margin-bottom: 1rem;
+}
+.contact-info input{
+    padding: 1rem;
+    width: 100%;
+}
+/* contact section done */
+
+/* map section  */
+.mapp{
+    background-color: #e6d26b61;
+}
+.map-section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+
+}
+.map-section input{
+    width: 100%;
+    height: 3rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+}
+.map-section input,
+.map-section textarea::placeholder{
+    padding-left: 2rem;
+}
+.map-section textarea{
+    width: 100%;
+    height: 18rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+}
+.inputareas div{
+    margin-bottom: 2rem;
+}
+.map-section iframe{
+    width: 600px;
+    height: 40rem;
+}
+.formm{
+    /* background-color: aquamarine; */
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.formm form{
+    box-shadow: 10px 5px 5px rgba(142, 87, 90, 0.51);
+}
+/* map section done */
+
+/* login section   */
+
+.login_section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    justify-content: center;
+    align-items: center;
+}
+.login_section img{
+    justify-items: center ;
+    width: 4 0%;
+}
+.login_section .img{
+    display: flex;
+    justify-content: center;
+}
+.login_section form div{
+    margin-bottom: 2rem;
+}
+.login_section form div input{
+    width: 80%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+}
+/* login section  done */
+
+/* register section  */
+.reg_section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    justify-content: center;
+    align-items: center;
+}
+.reg_section img{
+    justify-items: center ;
+}
+.reg_section .img{
+    display: flex;
+    justify-content: center;
+}
+.reg_section form div{
+    margin-bottom: 2rem;
+}
+.reg_section form div input{
+    width: 80%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+}
+/* register section done */
+
+
+/* profile creation  */
+.profile img{
+    width: 50%;
+    border-radius: 100%;
+}
+.firstbox{
+    max-height: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(120, 99, 99, 0.415);
+    border-radius: 4rem;
+}
+.profile{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+    gap: 3rem;
+    
+}
+.profilee{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+}
+.profilee h1 h2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* profile creation done */
+
+
+/* cart page styling */
+
+/* coupon section */
+.coupon{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+}
+/* coupon section done */
+
+/* cart total */
+.cart-total{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+}
+.cart-header{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+/* cart total done */
+
+/* cart page styling done */
+
+/* checkout page */
+.checkout{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+.checkout-details{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+    gap: 3rem;
+}
+/* checkout page done */
+
+/* thank_you section */
+.page h1{
+margin-top: 35%;
+}
+
+/* thank_you section done */
+
+/* webpage responsiveness */
+/* styling for small screen up to 500px */
+@media (max-width:500px){
+  
+}

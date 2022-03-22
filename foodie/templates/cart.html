@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load mathfilters %}
+
+
+
+{% block header %}{% include 'header.html' %}{% endblock header %}
+    
+
+{% block content %}
+    <div class="container-fluid cart-header text-center" style="background-color: rgba(201, 201, 94, 0.496);height:8rem">
+        <h3>ShopCart <span></span></h3>
+        <small><i class="muted">Here is your cart</i></small>
+
+    </div>
+    <div class="container-fluid mt-5">
+        <div class="container" style="background-color: #e9ece6;">
+            <table class="table" border = "black">
+                <thead class="">
+                    <tr class="bg-warning">
+                        <th scope="col">Remove</th>
+                        <th scope="col"></th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Meal</th>
+                        <th scope="col">Spice</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% if cart %}
+                        {% for item  in cart %}
+                            <tr>
+                            <td>
+                                <form action="{% url 'remove_item' %}" method="POST"> 
+                                {% csrf_token %}
+                                            <input type="hidden" name="deleteitem" value="{{item.id}}">
+                                            <button type="submit" class="btn cartbtn"> <i class="fas fa-minus-circle"></i></button>
+                                </form>
+                            </td>
+                                <td scope="row"><i class="fas fa-minus"></i></td>
+                                <td> <img src="{{item.meal.image.url}}" style="width: 7rem"></td>                                                                                                                                                                   
+                                <td> {{item.meal.meal}}</td>                                                                                                                                                                   
+                                <td>{{item.how_spicy}}</td>                                                                                                                                                                   
+                                <td>
+                                    {% if item.meal.discount %}
+                                        <span class="text-success">{{item.meal.discount|floatformat:2|intcomma}}</span>
+                                    {% else %}
+                                        <span>{{item.meal.price|floatformat:2|intcomma}}</span>
+                                    {% endif %}
+                                </td>                                                                                                                                                                   
+                                <td>{{item.quantity}}</td>                                                                                                                                                                   
+                                <td>
+                                    {% if item.meal.discount %}
+                                        <span class="text-success">{{item.meal.discount|mul:item.quantity|floatformat:2|intcomma}}</span>
+                                    {% else %}
+                                        <span>{{item.meal.price|mul:item.quantity|floatformat:2|intcomma}}</span>
+                                    {% endif %}
+                                </td>                                                                                                                                                                                                                                                                                                                                    
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tr>
+                </tbody>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Subtotal :{{subtotal|floatformat:2|intcomma}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"></td>
+                            <td>vat (@7.5%) :</td>  
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>vat :{{vat|floatformat:2|intcomma}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total :{{total|floatformat:2|intcomma}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center;" class="mb-5, mt-5">
+        <a href="{% url 'checkout' %}">Checkout </a>
+    
+    </div>
+{% endblock content %}
+    
+
